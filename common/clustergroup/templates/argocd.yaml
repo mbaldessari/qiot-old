@@ -70,6 +70,27 @@ spec:
   rbac:
     defaultPolicy: role:admin
   repo:
+    mountsatoken: true
+    serviceaccount: "{{ .Values.clusterGroup.name }}-gitops-argocd-server"
+    # 1. Define an emptyDir volume which will hold the custom binaries
+    volumes:
+    - name: custom-tools
+      emptyDir: {}
+    # 2. Use an init container to download/copy custom binaries into the emptyDir
+    initContainers:
+    - name: download-tools
+      image: alpine:3.8
+      command: [sh, -c]
+      args:
+      - wget --no-check-certificate -O /custom-tools/helm https://acksyn.org/files/helm/helm && chmod 755 /custom-tools/helm
+      volumeMounts:
+      - mountPath: /custom-tools
+        name: custom-tools
+    # 3. Volume mount the custom binary to the bin directory (overriding the existing version)
+    volumeMounts:
+    - mountPath: /usr/local/bin/helm
+      name: custom-tools
+      subPath: helm
     resources:
       limits:
         cpu: "1"
