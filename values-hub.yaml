@@ -64,6 +64,12 @@ clusterGroup:
       project: hub
       path: common/golang-external-secrets
 
+    vault-bootstrap:
+      name: vault-bootstrap
+      namespace: vault
+      project: hub
+      path: charts/hub/vault-bootstrap
+
 
       #imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
