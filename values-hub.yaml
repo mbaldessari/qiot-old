@@ -3,37 +3,16 @@ clusterGroup:
   isHubCluster: true
   # Note: setting this to true stores the vault unseal keys inside a cluster secret and
   # is fundamentally insecure
-  insecureUnsealVaultInsideCluster: true
+  insecureUnsealVaultInsideCluster: false
 
   namespaces:
-  - open-cluster-management
   - vault
   - golang-external-secrets
-  - config-demo
-
-  subscriptions:
-    acm:
-      name: advanced-cluster-management
-      namespace: open-cluster-management
-      channel: release-2.5
-      csv: advanced-cluster-management.v2.5.0
 
   projects:
   - hub
-  - config-demo
 
   applications:
-    acm:
-      name: acm
-      namespace: open-cluster-management
-      project: hub
-      path: common/acm
-      ignoreDifferences:
-      - group: internal.open-cluster-management.io
-        kind: ManagedClusterInfo
-        jsonPointers:
-          - /spec/loggingCA
-
     vault:
       name: vault
       namespace: vault
@@ -46,11 +25,6 @@ clusterGroup:
       project: hub
       path: common/golang-external-secrets
 
-    config-demo:
-      name: config-demo
-      namespace: config-demo
-      project: config-demo
-      path: charts/all/config-demo
 
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
@@ -59,13 +33,13 @@ clusterGroup:
     # imagePullPolicy is set to always: imperative.imagePullPolicy
     # For additional overrides that apply to the jobs, please refer to
     # https://hybrid-cloud-patterns.io/imperative-actions/#additional-job-customizations
-    jobs:
-    - name: regional-ca
-      # ansible playbook to be run
-      playbook: ansible/playbooks/on-hub-get-regional-ca.yml
-      # per playbook timeout in seconds
-      timeout: 234
-      # verbosity: "-v"
+    # jobs:
+    # - name: regional-ca
+    #   # ansible playbook to be run
+    #   playbook: ansible/playbooks/on-hub-get-regional-ca.yml
+    #   # per playbook timeout in seconds
+    #   timeout: 234
+    #   # verbosity: "-v"
 
   managedClusterGroups:
     exampleRegion:
