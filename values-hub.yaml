@@ -34,9 +34,6 @@ vault:
       annotations:
         service.beta.openshift.io/serving-cert-secret-name: vault-secret
 
-vault-bootstrap:
-  enabled: True
-
 clusterGroup:
   name: hub
   isHubCluster: true
