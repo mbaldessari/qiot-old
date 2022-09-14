@@ -54,8 +54,7 @@ clusterGroup:
       name: amq-streams
       namespace: manufacturing-dev
       channel: amq-streams-1.8.x
-      csv: amqstreams.v1.8.0
-      #installPlanApproval: Manual
+      csv: amqstreams.v1.8.4
 
     cert-manager-dev:
       name: cert-manager
