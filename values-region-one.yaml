@@ -9,13 +9,27 @@ clusterGroup:
   isHubCluster: false
 
   namespaces:
-    - config-demo
+    - factory
 
   subscriptions:
+    amqstreams-dev:
+      name: amq-streams
+      namespace: factory
+      channel: amq-streams-1.8.x
+      csv: amqstreams.v1.8.4
+
+    cert-manager-dev:
+      name: cert-manager
+      channel: stable
+      source: community-operators
+      #csv: cert-manager.v1.9.1
+
 
   projects:
-    - config-demo
+    - factory
 
+  # In the factory for now I am not deployying the sno-volumes-install chart
+  # as it seem to be more related to SNO installs where we need persistent storage
   applications:
     config-demo:
       name: config-demo
@@ -24,12 +38,12 @@ clusterGroup:
       path: charts/all/config-demo
 
 
-  imperative:
-    # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
-    jobs:
-    - name: get-hub
-      playbook: ansible/playbooks/on-regional-get-hub-ca.yml
-      timeout: 123
+      #imperative:
+      ## NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
+      #jobs:
+      #- name: get-hub
+      #playbook: ansible/playbooks/on-regional-get-hub-ca.yml
+      #timeout: 123
 
 #  To have apps in multiple flavors, use namespaces and use helm overrides as appropriate
 #
