@@ -51,6 +51,20 @@ clusterGroup:
   projects:
   - hub
 
+  subscriptions:
+ # TODO: Allow namespace to be a list
+    amqstreams-dev:
+      name: amq-streams
+      namespace: manufacturing-dev
+      channel: stable
+      csv: amqstreams.v2.1.0-6
+
+    cert-manager-dev:
+      name: cert-manager
+      channel: stable
+      source: community-operators
+      csv: cert-manager.v1.9.1
+
   applications:
     vault:
       name: vault
