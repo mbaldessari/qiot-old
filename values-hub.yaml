@@ -61,7 +61,7 @@ clusterGroup:
       name: cert-manager
       channel: stable
       source: community-operators
-      csv: cert-manager.v1.9.1
+      #csv: cert-manager.v1.9.1
 
   applications:
     vault:
