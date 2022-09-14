@@ -3,7 +3,7 @@ global:
   pattern: multicloud-gitops
 
   options:
-    useCSV: false
+    useCSV: true
     syncPolicy: Automatic
     installPlanApproval: Automatic
 
