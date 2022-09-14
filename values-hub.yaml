@@ -47,6 +47,7 @@ clusterGroup:
   namespaces:
   - vault
   - golang-external-secrets
+  - manufacturing-dev
 
   projects:
   - hub
