@@ -50,13 +50,11 @@ clusterGroup:
   - hub
 
   subscriptions:
- # TODO: Allow namespace to be a list
     amqstreams-dev:
       name: amq-streams
       namespace: manufacturing-dev
-      channel: stable
-      #csv: amqstreams.v2.1.0-6
-      csv: amqstreams.v1.8.0
+      channel: amq-streams-1.8.x
+      csv: amqstreams.v1.8.4
       installPlanApproval: Manual
 
     cert-manager-dev:
