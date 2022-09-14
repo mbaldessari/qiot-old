@@ -5,10 +5,10 @@ metadata:
   name: {{ include "issuer.fullname" . }}-policy
   labels:
     {{- include "issuer.labels" . | nindent 4 }}
-  annotations:
-    "helm.sh/hook": pre-install
-    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
-    "helm.sh/hook-weight": "1"
+  #annotations:
+    #"helm.sh/hook": pre-install
+    #"helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+    #"helm.sh/hook-weight": "1"
   namespace: {{ .Values.issuer.vault.namespace }}
 spec:
   backoffLimit: 0
