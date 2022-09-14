@@ -83,7 +83,7 @@ clusterGroup:
       path: charts/hub/vault-bootstrap
 
     ocp-install:
-      name: vault-bootstrap
+      name: ocp-install
       namespace: manufacturing-dev
       project: hub
       path: charts/hub/ocp-install
