@@ -22,7 +22,7 @@ post-install: ## Post-install tasks - vault init and load-secrets
 	# else \
 	#   make vault-init; \
 	# fi
-	make load-secrets
+	#make load-secrets
 	echo "Done"
 
 common-test:
