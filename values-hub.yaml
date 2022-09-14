@@ -57,6 +57,7 @@ clusterGroup:
       channel: stable
       #csv: amqstreams.v2.1.0-6
       csv: amqstreams.v1.8.0
+      installPlanApproval: manual
 
     cert-manager-dev:
       name: cert-manager
