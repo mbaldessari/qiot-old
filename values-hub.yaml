@@ -82,6 +82,13 @@ clusterGroup:
       project: hub
       path: charts/hub/vault-bootstrap
 
+    ocp-install:
+      name: vault-bootstrap
+      namespace: manufacturing-dev
+      project: hub
+      path: charts/hub/ocp-install
+
+
 
       #imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
