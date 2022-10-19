@@ -9,10 +9,7 @@ help:
 %:
 	make -f common/Makefile $*
 
-operator-install: operator-deploy post-install ## installs the pattern, inits the vault and loads the secrets
-	echo "Installed"
-
-install: legacy-deploy post-install ## install the pattern the old way without the operator
+install: operator-deploy post-install ## installs the pattern, inits the vault and loads the secrets
 	echo "Installed"
 
 post-install: ## Post-install tasks - vault init and load-secrets
